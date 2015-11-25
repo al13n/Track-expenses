@@ -1,0 +1,8 @@
+# node module files
+node_modules/
+
+#bower 
+public/bower_components
+
+#mongo
+data/

@@ -1,0 +1,32 @@
+{
+  "name": "project-akshit-poddar",
+  "version": "1.0.0",
+  "description": "Simple tracker expenses app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.toptal.com:Filip-Defar/project-akshit-poddar.git"
+  },
+  "author": "akshit.poddar@stonybrook.edu",
+  "license": "ISC",
+  "dependencies": {
+    "angular-ui-router": "^0.2.15",
+    "body-parser": "^1.14.1",
+    "connect-livereload": "^0.5.4",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^1.12.0",
+    "gulp-load-plugins": "^1.1.0",
+    "jsonwebtoken": "^5.4.1",
+    "mongoose": "^4.2.5",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}

@@ -1,0 +1,112 @@
+<div style="top:50px;position:absolute; width:100%">
+	<div class="row" style="left: 9%;position: relative;">
+		<div class="col-xs-12" style="position: relative;left: 30.5%;margin-bottom: 20px;margin-top: 20px;font-size: 17px;font-weight: 200;"> ADD/UPDATE EXPENSE: </div>
+		<div class="col-xs-2">
+            <input style="width:100%" type="date" uib-datepicker-popup ng-model="manageExpenses.newExpense.date" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+        </div>
+        <div class="col-xs-2"><input style="width:100%" type="text" ng-model="manageExpenses.newExpense.amount" placeholder="Enter amount" /></div>
+		<div class="col-xs-2"><input style="width:100%" type="text" ng-model="manageExpenses.newExpense.description" placeholder="Enter description" /></div>
+		<div class="col-xs-2"><input style="width:100%" type="text" ng-model="manageExpenses.newExpense.comment" placeholder="Enter comment" /></div>
+		<div> <button class="btn btn-primary col-xs-1" ng-show="manageExpenses.showAdd()" ng-click="manageExpenses.addNewExpense()">ADD</button> </div>
+		<div> <button class="btn btn-primary col-xs-1" ng-show="!manageExpenses.showAdd()" ng-click="manageExpenses.updateExpense()">UPDATE</button> </div>
+		<div> <button class="btn btn-primary col-xs-1" ng-show="!manageExpenses.showAdd()" ng-click="manageExpenses.cancel()">CANCEL</button> </div>
+	</div>
+	<div>
+	<div class="row" style="position: relative;left: 13.7%;margin-top: 60px;">
+		<button class="btn" ng-class="{'isSelected': manageExpenses.isTabValue(1)}" ng-click="manageExpenses.setTabValue(1)" style="border:1px solid black !important;">MANAGE EXPENSES</button>
+		<button class="btn" ng-class="{'isSelected': manageExpenses.isTabValue(2)}" ng-click="manageExpenses.setTabValue(2)" style="border:1px solid black !important;">MANAGE USERS</button>
+		<button class="btn" ng-class="{'isSelected': manageExpenses.isTabValue(3)}" ng-click="manageExpenses.setTabValue(3)" style="border:1px solid black !important;">STATISTICS</button>
+
+	</div>
+	<div ng-show="manageExpenses.isNotEmptyList()">
+
+	<table class="row expensesTable" style="position: relative;top: 70px; left:7.4%" ng-show="manageExpenses.isTabValue(1)">
+		<!--<caption style="position: relative;left: 40%;margin-bottom: 20px;">MANAGE YOUR EXPENSES</caption>-->
+		<thead>
+			<tr class="row">
+				<th class="col-xs-3 fontCaptions">DATE</th>
+				<th class="col-xs-2 fontCaptions mids">AMOUNT</th>
+				<th class="col-xs-2 fontCaptions mids">DESCRIPTION</th>
+				<th class="col-xs-2 fontCaptions mids">COMMENT</th>
+				<th class="col-xs-3 fontCaptions ">ACTIONS</th>
+			</tr>
+		</thead>
+		<tbody>
+			<div class="row" style="position:relative;margin-top:50px;left:100px;" ng-show="manageExpenses.isTableShown()">
+				<span class="col-xs-12 fontCaptions">FILTER:</span>
+				<!--<label class="filterClass"><input placeholder="any" ng-model="search.$"></label>-->
+				<label class="filterClass"><input placeholder="date" ng-model="search.date"></label>
+				<label class="filterClass"><input placeholder="amount" ng-model="search.amount"></label>
+				<label class="filterClass"><input placeholder="description" ng-model="search.description"></label>
+				<label class="filterClass"><input placeholder="comment" ng-model="search.comment"></label>
+			</div>	
+			<tr class="row" style="margin-top: 10px;"ng-repeat="expense in manageExpenses.expensesList | filter:search">
+				<td class="col-xs-3">{{expense.date.toDateString()}}</td>
+				<td class="col-xs-2">{{expense.amount}}</td>
+				<td class="col-xs-2">{{expense.description}}</td>
+				<td class="col-xs-2">{{expense.comment}}</td>
+				<td class="col-xs-3"><button class="btn btn-primary" ng-click="manageExpenses.moveToUpdate(expense)">EDIT</button>
+				<button class="btn btn-danger" ng-click="manageExpenses.deleteExpense(expense._id)" ng-show="manageExpenses.newExpense._id !== expense._id">DELETE</button></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<table class="row expensesTable" style="position: relative;top: 70px; left:7.4%" ng-show="manageExpenses.isTabValue(2)">	
+		<thead>
+			<tr class="row">
+				<td class="col-xs-3 fontCaptions">USER NAME</td>
+				<td class="col-xs-3 fontCaptions mids2">ADMIN</td>
+				<td class="col-xs-3 fontCaptions">DELETE</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="row" style="margin-top: 10px;"ng-repeat="user in manageExpenses.usersList ">
+				<td class="col-xs-2">{{user.username}}</td>
+				<td class="col-xs-3" ng-show="user.realm == 0"><button class="btn btn-primary" ng-click="manageExpenses.makeAdminUser(user._id)" >MAKE</button></td>
+				<td class="col-xs-3" ng-show="user.realm == 1"><button class="btn btn-primary" ng-click="manageExpenses.removeAdminUser(user._id)" >REMOVE</button></td>
+				<td class="col-xs-2"><button class="btn btn-danger" ng-click="manageExpenses.deleteUser(user._id)">DELETE</button></td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<div class="row" style="position: relative;left: 14.5%;margin-top: 40px;" ng-show="manageExpenses.isTabValue(3)">
+		<!--<div class="col-xs-12">BASIC ANALYTICS:</div>-->
+		<div class="col-xs-12 fontCaptions">OVERALL</div>
+		<div class="col-xs-12">TOTAL EXPENSE: {{manageExpenses.totalExpenses}}</div>
+		<div class="col-xs-12">AVERAGE DAY SPENDING: {{manageExpenses.averageDaySpending}}</div>
+		<div class="col-xs-12">AVERAGE WEEKLY SPEND: {{manageExpenses.averageWeeklySpending}}</div>
+		<div class="col-xs-12">&nbsp;</div>
+		<div class="col-xs-12 fontCaptions">CURRENT</div>
+		<div class="col-xs-12">THIS WEEK'S EXPENDITURE: {{manageExpenses.lastWeekExpenditure}}</div>
+		<div class="col-xs-12">YOUR EXPENSES TODAY: {{manageExpenses.expensesToday}} </div>
+	</div>
+<div>
+</div>
+
+<style type="text/css">
+	.isSelected{
+		background: cornsilk;
+	}
+	.expensesTable td{
+		padding: 7px;
+	}
+
+	.fontCaptions{
+		font-size: 16px;
+    	font-weight: 600;
+    	color: E37151;
+	}
+
+	.mids{
+	    left: -30px;
+    	position: relative !important;
+	}
+
+	.mids2{
+	    left: 25px;
+    	position: relative !important;
+	}
+
+</style>

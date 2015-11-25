@@ -1,0 +1,47 @@
+<div style="position: relative;height: 100%;width: 100%;">
+		<form name="signupform" style="    left: 35%;
+    position: relative;
+    top: 20%;
+    padding: 40px;
+    width: 28%;
+    border: 1px silver solid;
+    border-radius: 30px;
+    background-color: lightgoldenrodyellow;">
+        <div class="headtxt">SIGN UP</div><br/>
+        <div class="row padd ">
+			<span class="col-xs-4">Username: </span><input name="username" class="col-xs-8" type="text" ng-model="signup.user.username" placeholder="Your username" required /><br />
+        </div>
+        <div class="row padd">
+    		<span class="col-xs-4">E-mail: </span><input name="email" class="col-xs-8" type="email" ng-model="signup.user.email" placeholder="Your email id" required /><br />
+        </div>
+        <div class="row padd">
+    		<span class="col-xs-4">Password: </span><input name="password" class="col-xs-8" type="password" ng-model="signup.user.password" placeholder="Your password"required /><br />
+        </div>
+        <div class="">
+    		<button class="btn btn-primary sbtn" ng-click="signup.submit()" style="margin-top:25px;">Sign Up</button>
+            <button class="btn sbtn" ng-click="signup.cancel()" style="margin-top:25px;">Cancel</button>
+        </div>
+		</form>
+</div>
+
+<style type="text/css">
+    .headtxt{
+        font-size: large;
+        font-family: monospace;
+        position: relative;
+        left: 38%;
+    }
+    .padd{
+        padding: 2px;
+    }
+    .sbtn{
+        width: 120px;
+        margin-right: 10px;
+    }
+
+    .col-xs-8{
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+</style>

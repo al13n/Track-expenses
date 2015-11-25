@@ -1,0 +1,45 @@
+				+-+-+-+-+-+-+-+-+-+-+-+-+
+				+						+
+				|		README			|
+				+						+
+				+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+This is a basic expenses tracker app, with the following features:
+1. Allows users to sign up, and login to this application.
+2. Add and manage expenses.
+3. Filter expenses.
+4. Make small analysis on their expenses.
+5. User roles - regular, and admin. 
+
+
+It is implemented using the MEAN stack: 
+1. MongoDb - NoSQL db
+2. Express - Server
+3. Angular - Frontend framework
+4. Node
+
+Authentication is implemented using json web tokens. 
+
+
+	USER DOCUMENTATION: 
+------------------------------
+
+In your shell/cmd prompt:
+	npm install
+	cd ./public
+	npm install bower
+	bower update
+	cd ..
+	./db-start.sh
+	./app-start.sh
+
+Now, browse to:
+	localhost:3000
+
+To create a admin user, in your terminal, browse to project folder: ($USERNAME : make admin)
+	mongo
+	use track-expenses
+	db.users.find() // $USERNAME is the username who will be given admin privileges
+	db.users.update({username: $USERNAME}, {$set:{realm: "1"}})
+		
