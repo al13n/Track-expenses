@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Track-expenses by al13n</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Track-expenses</h1>
+        <p>Basic tutorial web application to track your expenses</p>
+
+        <p class="view"><a href="https://github.com/al13n/Track-expenses">View the Project on GitHub <small>al13n/Track-expenses</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/al13n/Track-expenses/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/al13n/Track-expenses/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/al13n/Track-expenses">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
+<a id="readme" class="anchor" href="#readme" aria-hidden="true"><span class="octicon octicon-link"></span></a>README</h2>
+
+<h5>
+<a id="this-is-a-basic-expenses-tracker-app-with-the-following-features" class="anchor" href="#this-is-a-basic-expenses-tracker-app-with-the-following-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>This is a basic expenses tracker app, with the following features:</h5>
+
+<ol>
+<li><p>Allows users to sign up, and login to this application.</p></li>
+<li><p>Add and manage expenses.</p></li>
+<li><p>Filter expenses.</p></li>
+<li><p>Make small analysis on their expenses.</p></li>
+<li><p>User roles - regular, and admin. </p></li>
+</ol>
+
+<h5>
+<a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation:</h5>
+
+<p>It uses the MEAN stack: </p>
+
+<ol>
+<li><p>MongoDb - NoSQL db</p></li>
+<li><p>Express - Server</p></li>
+<li><p>Angular - Frontend framework</p></li>
+<li><p>Node</p></li>
+</ol>
+
+<p>Authentication is implemented using json web tokens. </p>
+
+<h3>
+<a id="user-documentation" class="anchor" href="#user-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>USER DOCUMENTATION</h3>
+
+<h5>
+<a id="in-your-shellcmd-prompt" class="anchor" href="#in-your-shellcmd-prompt" aria-hidden="true"><span class="octicon octicon-link"></span></a>In your shell/cmd prompt:</h5>
+
+<div class="highlight highlight-source-js"><pre>npm install
+cd .<span class="pl-k">/</span><span class="pl-k">public</span>
+npm install bower
+bower update
+cd ..
+.<span class="pl-k">/</span>db<span class="pl-k">-</span><span class="pl-smi">start</span>.<span class="pl-smi">sh</span>
+.<span class="pl-k">/</span>app<span class="pl-k">-</span><span class="pl-smi">start</span>.<span class="pl-smi">sh</span></pre></div>
+
+<h5>
+<a id="now-browse-to" class="anchor" href="#now-browse-to" aria-hidden="true"><span class="octicon octicon-link"></span></a>Now, browse to:</h5>
+
+<pre><code>localhost:3000
+</code></pre>
+
+<h6>
+<a id="to-create-a-admin-user-in-your-terminal-browse-to-project-folder" class="anchor" href="#to-create-a-admin-user-in-your-terminal-browse-to-project-folder" aria-hidden="true"><span class="octicon octicon-link"></span></a>To create a admin user, in your terminal, browse to project folder:</h6>
+
+<pre><code>mongo
+use track-expenses
+db.users.find() // $USERNAME is the username who will be given admin privileges`
+db.users.update({username: $USERNAME}, {$set:{realm: "1"}})`
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/al13n">al13n</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
